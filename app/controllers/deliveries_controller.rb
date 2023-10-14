@@ -37,18 +37,20 @@ class DeliveriesController < ApplicationController
     the_id = params.fetch("path_id")
     the_delivery = Delivery.where({ :id => the_id }).at(0)
 
-    the_delivery.recipient_id = params.fetch("query_recipient_id")
-    the_delivery.description = params.fetch("query_description")
-    the_delivery.arrival_date = params.fetch("query_arrival_date")
-    the_delivery.details = params.fetch("query_details")
-    the_delivery.delivery_status = params.fetch("query_delivery_status", false)
+    # the_delivery.recipient_id = params.fetch("query_recipient_id")
+    # the_delivery.description = params.fetch("query_description")
+    # the_delivery.arrival_date = params.fetch("query_arrival_date")
+    # the_delivery.details = params.fetch("query_details")
+    the_delivery.delivery_status = true
 
-    if the_delivery.valid?
+    # if the_delivery.valid?
       the_delivery.save
-      redirect_to("/deliveries/#{the_delivery.id}", { :notice => "Delivery updated successfully."} )
-    else
-      redirect_to("/deliveries/#{the_delivery.id}", { :alert => the_delivery.errors.full_messages.to_sentence })
-    end
+    #   redirect_to("/deliveries/#{the_delivery.id}", { :notice => "Delivery updated successfully."} )
+    # else
+    #   redirect_to("/deliveries/#{the_delivery.id}", { :alert => the_delivery.errors.full_messages.to_sentence })
+    # end
+
+    redirect_to("/")
   end
 
   def destroy

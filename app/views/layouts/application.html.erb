@@ -11,6 +11,20 @@
   </head>
 
   <body>
+  <% if current_user != nil %>
+    <a href="/">Delivery Tracker</a>
+    |
+    <a href="/users/edit ">Edit profile</a>
+    |
+    <a href="">Sign out</a>
+  <% else %>
+    <a href="">Sign up</a>
+    |
+    <a href="">Sign in</a>
+  <% end %>
+
+    <hr>
+
     <%= yield %>
   </body>
 </html>
