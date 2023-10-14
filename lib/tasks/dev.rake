@@ -13,15 +13,15 @@ task({ :sample_data => :environment}) do
 
     10.times do
       delivery = Delivery.new
-      delivery.user_id = user.id
+      delivery.recipient_id = user.id
       delivery.description = Faker::Commerce.product_name
       delivery.details = "#{["FedEx", "UPS", "USPS"].sample} tracking ##{rand(1000000000000)}" if rand < 0.5
-      delivery.supposed_to_arrive_on = Faker::Date.between(from: 1.month.ago, to: 2.weeks.from_now)
+      delivery.arrival_date = Faker::Date.between(from: 1.month.ago, to: 2.weeks.from_now)
 
-      if delivery.supposed_to_arrive_on < Time.now
-        delivery.arrived = [true, false].sample
+      if delivery.arrival_date < Time.now
+        delivery.delivery_status = [true, false].sample
       else
-        delivery.arrived = false
+        delivery.delivery_status = false
       end
 
       delivery.save

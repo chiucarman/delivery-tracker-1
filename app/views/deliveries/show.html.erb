@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Delivery #<%= @the_delivery.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/deliveries">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_delivery/<%= @the_delivery.id %>">
+          Delete delivery
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Recipient
+      </dt>
+      <dd>
+        <%= @the_delivery.recipient_id %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_delivery.description %>
+      </dd>
+
+      <dt>
+        Arrival date
+      </dt>
+      <dd>
+        <%= @the_delivery.arrival_date %>
+      </dd>
+
+      <dt>
+        Details
+      </dt>
+      <dd>
+        <%= @the_delivery.details %>
+      </dd>
+
+      <dt>
+        Delivery status
+      </dt>
+      <dd>
+        <%= @the_delivery.delivery_status %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_delivery.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_delivery.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit delivery
+    </h2>
+
+    <form action="/modify_delivery/<%= @the_delivery.id %>"  method="post" >
+      <div>
+        <label for="recipient_id_box">
+          Recipient
+        </label>
+
+        <input type="text" id="recipient_id_box" name="query_recipient_id" value="<%= @the_delivery.recipient_id %>">
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" value="<%= @the_delivery.description %>">
+      </div>
+
+      <div>
+        <label for="arrival_date_box">
+          Arrival date
+        </label>
+
+        <input type="date" id="arrival_date_box" name="query_arrival_date" value="<%= @the_delivery.arrival_date %>">
+      </div>
+
+      <div>
+        <label for="details_box">
+          Details
+        </label>
+
+        <input type="text" id="details_box" name="query_details" value="<%= @the_delivery.details %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="delivery_status_box" name="query_delivery_status" value="1" <%= "checked" if @the_delivery.delivery_status %>>
+
+        <label for="delivery_status_box">
+            Delivery status
+        </label>
+      </div>
+
+      <button>
+        Update delivery
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
