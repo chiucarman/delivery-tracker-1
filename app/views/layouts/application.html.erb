@@ -11,19 +11,27 @@
   </head>
 
   <body>
-  <% if current_user != nil %>
-    <a href="/">Delivery Tracker</a>
-    |
-    <a href="/users/edit ">Edit profile</a>
-    |
-    <a href="">Sign out</a>
-  <% else %>
-    <a href="">Sign up</a>
-    |
-    <a href="">Sign in</a>
-  <% end %>
+    <nav>
+      <% if current_user != nil %>
+        <a href="/">Delivery Tracker</a>
+        |
+        <a href="/users/edit ">Edit profile</a>
+        |
+        <a href="">Sign out</a>
+      <% else %>
+        <a href="">Sign up</a>
+        |
+        <a href="">Sign in</a>
+      <% end %>
+    </nav>
 
     <hr>
+
+    <% if notice.present? %>
+      <div>
+        <%= notice %>
+      </div>
+    <% end %>
 
     <%= yield %>
   </body>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # Routes for the Delivery resource:
 
+  get("/users/sign_in", { :controller => "users", :action => "sign_in" })
+
   # CREATE
   post("/insert_delivery", { :controller => "deliveries", :action => "create" })
           

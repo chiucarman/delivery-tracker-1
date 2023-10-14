@@ -3,12 +3,12 @@
     <h1>
       Delivery Tracker
     </h1>
+
+    <p>
+      Know if something gets lost in the mail
+    </p>
   </div>
 </div>
-
-<p>
-  Know if something gets lost in the mail
-</p>
 
 <hr>
 
@@ -19,10 +19,6 @@
     </h2>
 
     <form action="/insert_delivery" method="post">
-      <div>
-        <input type="hidden" id="recipient_id_box" name="query_recipient_id" value="<%=  %>">
-      </div>
-
       <div>
         <label for="description_box">
           Description
@@ -56,55 +52,62 @@
 
 <hr>
 
-<h2>Waiting on</h2>
+<div class="waiting_on">
 
-<% @list_of_deliveries.each do |a_delivery| %>
-  <ul>
-    <% if a_delivery.delivery_status == false %>
-      <li>
-        <div>
-          <%= a_delivery.description %>
-        </div>
+  <h2>Waiting on</h2>
 
-        <div>
-          Supposed to arrive on <%= a_delivery.arrival_date %>
-        </div>
+  <% @list_of_deliveries.each do |a_delivery| %>
+    <ul>
+      <% if a_delivery.delivery_status == false %>
+        <li>
+          <div>
+            <%= a_delivery.description %>
+          </div>
 
-        <div>
-          <%= a_delivery.details %>
-        </div>
-        
-        <div>
-          <form action="/modify_delivery/<%= a_delivery.id %>" method="post">
-              <button>
-                Mark as received
-              </button>
-          </form>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-<% end%>
+          <div>
+            Supposed to arrive on <%= a_delivery.arrival_date %>
+          </div>
+
+          <div>
+            <%= a_delivery.details %>
+          </div>
+          
+          <div>
+            <form action="/modify_delivery/<%= a_delivery.id %>" method="post">
+                <button>
+                  Mark as received
+                </button>
+            </form>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end%>
+</div>
 
 <hr>
 
-<h2>Received</h2>
+<div class="received">
 
-<% @list_of_deliveries.each do |a_delivery| %>
-  <ul>
-    <% if a_delivery.delivery_status == true %>
-      <li>
-        <div>
-          <%= a_delivery.description %>
-        </div>
+  <h2>Received</h2>
 
-        <div>
-          <small>
-            Updated <%= time_ago_in_words(a_delivery.updated_at) %> ago
-            <a href="/delete_delivery/<%= a_delivery.id %>">Delete</a>
-          </small>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-<% end%>
+  <% @list_of_deliveries.each do |a_delivery| %>
+    <ul>
+      <% if a_delivery.delivery_status == true %>
+        <li>
+          <div>
+            <%= a_delivery.description %>
+          </div>
+
+          <div>
+            <small>
+              Updated <%= time_ago_in_words(a_delivery.updated_at) %> ago
+              <a href="/delete_delivery/<%= a_delivery.id %>">Delete</a>
+            </small>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end%>
+
+</div>
