@@ -12,4 +12,8 @@
 #  recipient_id    :integer
 #
 class Delivery < ApplicationRecord
+
+  def late?
+    arrival_date < Time.now
+  end
 end

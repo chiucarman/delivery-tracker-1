@@ -20,6 +20,8 @@
 
     <form action="/insert_delivery" method="post">
       <div>
+
+
         <label for="description_box">
           Description
         </label>
@@ -53,7 +55,6 @@
 <hr>
 
 <div class="waiting_on">
-
   <h2>Waiting on</h2>
 
   <% @list_of_deliveries.each do |a_delivery| %>
@@ -64,9 +65,16 @@
             <%= a_delivery.description %>
           </div>
 
-          <div>
-            Supposed to arrive on <%= a_delivery.arrival_date %>
-          </div>
+
+          <% if a_delivery.late? %>
+            <div class="late">
+              Supposed to arrive on <%= a_delivery.arrival_date %>
+            </div>
+          <% else %>
+            <div>
+              Supposed to arrive on <%= a_delivery.arrival_date %>
+            </div>
+          <% end %>
 
           <div>
             <%= a_delivery.details %>
@@ -88,7 +96,6 @@
 <hr>
 
 <div class="received">
-
   <h2>Received</h2>
 
   <% @list_of_deliveries.each do |a_delivery| %>
@@ -109,5 +116,4 @@
       <% end %>
     </ul>
   <% end%>
-
 </div>

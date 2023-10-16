@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   # Routes for the Delivery resource:
 
-  get("/users/sign_in", { :controller => "users", :action => "sign_in" })
-
   # CREATE
   post("/insert_delivery", { :controller => "deliveries", :action => "create" })
           
@@ -22,7 +20,7 @@ Rails.application.routes.draw do
 
   #------------------------------
 
-  devise_for :users
+  devise_for(:users)
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

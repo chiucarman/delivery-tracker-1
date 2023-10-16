@@ -19,7 +19,7 @@ class DeliveriesController < ApplicationController
 
   def create
     the_delivery = Delivery.new
-    # the_delivery.recipient_id = params.fetch("query_recipient_id")
+    the_delivery.recipient_id = current_user.id
     the_delivery.description = params.fetch("query_description")
     the_delivery.arrival_date = params.fetch("query_arrival_date")
     the_delivery.details = params.fetch("query_details")
